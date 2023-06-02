@@ -12,7 +12,7 @@ Clone the project
 ```
 Open project directory
 ```bash
-  cd .\moobileapp\
+  cd .\dashboard\
 ```
 Install dependencies
 ```bash
