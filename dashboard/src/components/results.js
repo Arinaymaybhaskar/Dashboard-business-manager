@@ -187,6 +187,7 @@ const Results = () => {
                   <p className=' w-[140px] text-center'>{order.quantity}</p>
                   <p className=' w-[140px] text-center'>{order.price}</p>
                   <p className=' w-[140px] text-center'>{order.placed_on}</p>
+                  {/* edit content form popup */}
                   <Popup
                     trigger={
                       <button
