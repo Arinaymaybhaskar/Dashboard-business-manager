@@ -33,6 +33,7 @@ function App() {
         </div>
       </aside>
       {/* sidebar end */}
+      {/* main content */}
       <div className='absolute left-[15%] w-[85%] p-8 pr-16'>
         <div className='flex justify-between'>
           <p className='font-bold text-2xl'>Orders</p>
@@ -43,6 +44,7 @@ function App() {
         </div>
         <div className='bg-[#000000] bg-opacity-10  h-[1px] mt-5 w-full'></div>
         <Results/>
+        {/* issues */}
         <div className='bg-white mt-6 p-6 rounded-xl shadow-md'>
           <div className='flex justify-between'>
             <p className='font-semibold text-[17px] flex items-center'>Issues<span className='text-[#2F2F2F] text-opacity-40 ml-4'>

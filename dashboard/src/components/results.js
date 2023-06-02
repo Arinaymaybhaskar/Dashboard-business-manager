@@ -4,10 +4,12 @@ import Popup from 'reactjs-popup';
 
 const Results = () => {
 
+  // usestate funtions
   const [status, setStatus] = useState('')
   const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState('');
 
+  // setting status of orders
   const confirmed = (status) => {
     setStatus("Confirmed")
   }
@@ -24,6 +26,7 @@ const Results = () => {
     setStatus('');
   };
 
+  // function to sort by amount
   const sortByAmount = () => {
     const sortedData = [...filteredData];
     sortedData.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -31,6 +34,7 @@ const Results = () => {
     setSortBy('Amount')
   };
 
+  // function to sort by amount
   const sortByPlacedOn = () => {
     const sortedData = [...filteredData];
     sortedData.sort((a, b) => new Date(b.placed_on) - new Date(a.placed_on));
@@ -38,11 +42,13 @@ const Results = () => {
     setSortBy('Placed On');
   };
 
+  // setting filter for formatting data for only selected status data
   useEffect(() => {
     const filtered = status ? data.filter((order) => order.status === status) : data;
     setFilteredData(filtered);
   }, [status]);
-
+  
+  // trying to edit content
   const [editedOrder, setEditedOrder] = useState(null);
   const saveEditedOrder = () => {
     const orderIndex = filteredData.findIndex((o) => o.id === editedOrder.id);
@@ -89,6 +95,7 @@ const Results = () => {
           </div>
           <div className='flex gap-10 pr-4'>
             <div id='activeOrders' className='flex items-center'>
+              {/* popup for status selection data */}
               <Popup
                 trigger={
                   <div className='flex bg-[#F3F4F9]  gap-3 rounded-[7px] items-center w-[125px] h-[27px] justify-between px-2 cursor-pointer'>
@@ -132,6 +139,7 @@ const Results = () => {
               <img src="/icons/updown.png" className='w-[5px] ml-4' alt="" />
             </div>
 
+                {/* sort by amount button */}
             <div id='Amount' className='flex items-center'>
               <button
                 onClick={sortByAmount}
@@ -141,6 +149,7 @@ const Results = () => {
               </button>
               <img src="/icons/updown.png" className='w-[5px] ml-4' alt="" />
             </div>
+            {/* sort by Placed on button */}
             <div id='PlacedOn' className='flex items-center'>
               <button
                 onClick={sortByPlacedOn}
@@ -158,6 +167,7 @@ const Results = () => {
             </div>
           </div>
         </div>
+        {/* objects */}
         <div className="order-list">
           {filteredData.map((order) => {
             const isEditing = editedOrder && editedOrder.id === order.id;
